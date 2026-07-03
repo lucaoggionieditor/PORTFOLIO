@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Contact</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
+</head>
+
+<body class="contact fade-page">
+
+  <!-- PAGE TRANSITION -->
+
+  <div class="page-fade"></div>
+
+  <!-- VIDEO BG -->
+
+  <video
+    class="home-video"
+    autoplay
+    muted
+    loop
+    playsinline>
+
+   <source
+  src="bg-portfolio.mp4"
+  type="video/mp4">
+
+  </video>
+
+  <!-- OVERLAY -->
+
+  <div class="home-overlay"></div>
+
+  <!-- NAV -->
+
+  <div class="nav">
+
+    <a href="index.html">
+      HOME
+    </a>
+
+  </div>
+
+  <!-- CONTACT CONTENT -->
+
+  <section class="contact-wrapper">
+
+  
+
+    <div class="contact-block">
+
+      <div class="contact-label">
+        EMAIL
+      </div>
+
+      <a
+        href="mailto:yourmail@email.com"
+        class="contact-value">
+
+        LUCAOGGIONI.EDITOR@GMAIL.COM
+
+      </a>
+
+    </div>
+
+    <div class="contact-block">
+
+      <div class="contact-label">
+        PHONE
+      </div>
+
+      <a
+        href="tel:+393473257142"
+        class="contact-value">
+
+        +39 347 325 7142
+
+      </a>
+
+    </div>
+
+    <div class="contact-block">
+
+      <div class="contact-label">
+        LOCATION
+      </div>
+
+      <div class="contact-value">
+        MILAN / WORLDWIDE
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PAGE FADE -->
+
+  <script>
+
+    const fade =
+      document.querySelector('.page-fade');
+
+    const links =
+      document.querySelectorAll('a[href]');
+
+    links.forEach(link => {
+
+      link.addEventListener('click', e => {
+
+        const href =
+          link.getAttribute('href');
+
+        if(
+          href.startsWith('#') ||
+          href.startsWith('mailto:') ||
+          href.startsWith('http') ||
+          href.startsWith('tel:')
+        ){
+          return;
+        }
+
+        e.preventDefault();
+
+        fade.classList.add('active');
+
+        setTimeout(() => {
+
+          window.location.href = href;
+
+        }, 220);
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>

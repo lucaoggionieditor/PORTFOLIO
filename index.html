@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>HOME</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
+</head>
+
+<body class="home fade-page">
+
+  <!-- FADE -->
+
+  <div class="page-fade"></div>
+
+  <!-- VIDEO BG -->
+
+<video
+  class="home-video desktop-video"
+  autoplay
+  muted
+  loop
+  playsinline>
+
+  <source
+    src="reel-desktop.mp4"
+    type="video/mp4">
+
+</video>
+
+<video
+  class="home-video mobile-video"
+  autoplay
+  muted
+  loop
+  playsinline>
+
+  <source
+    src="reel-mobile.mp4"
+    type="video/mp4">
+
+</video>
+
+  <!-- OVERLAY -->
+
+  <div class="home-overlay"></div>
+  <div class="sound-toggle">
+  SOUND OFF
+</div>
+
+  <!-- MENU -->
+
+  <div class="home-menu">
+
+    <a href="portfolio.html">
+      PORTFOLIO
+    </a>
+
+<a href="contact.html">
+  CONTACT
+</a>
+
+  </div>
+
+  <!-- PAGE FADE -->
+
+  <script>
+
+    const fade =
+      document.querySelector('.page-fade');
+
+    const links =
+      document.querySelectorAll('a[href]');
+
+    links.forEach(link => {
+
+      link.addEventListener('click', e => {
+
+        const href =
+          link.getAttribute('href');
+
+        if(
+          href.startsWith('#') ||
+          href.startsWith('mailto:') ||
+          href.startsWith('http')
+        ){
+          return;
+        }
+
+        e.preventDefault();
+
+        fade.classList.add('active');
+
+        setTimeout(() => {
+
+          window.location.href = href;
+
+        }, 220);
+
+      });
+
+    });
+
+const desktopVideo =
+  document.querySelector('.desktop-video');
+
+const mobileVideo =
+  document.querySelector('.mobile-video');
+
+const soundBtn =
+  document.querySelector('.sound-toggle');
+
+/* FERMA IL VIDEO CHE NON SERVE */
+
+if(window.innerWidth <= 900){
+
+  desktopVideo.pause();
+
+}else{
+
+  mobileVideo.pause();
+
+}
+
+let muted = true;
+
+soundBtn.addEventListener('click', () => {
+
+  muted = !muted;
+
+  if(window.innerWidth <= 900){
+
+    mobileVideo.muted = muted;
+
+  }else{
+
+    desktopVideo.muted = muted;
+
+  }
+
+  soundBtn.textContent =
+    muted
+      ? 'SOUND OFF'
+      : 'SOUND ON';
+
+});
+
+  </script>
+
+</body>
+
+</html>
